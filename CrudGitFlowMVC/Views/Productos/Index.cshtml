@@ -21,6 +21,7 @@ else
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Descripción</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -33,9 +34,18 @@ else
                     <td>@producto.Precio</td>
                     <td>@producto.Cantidad</td>
                     <td>@producto.Descripcion</td>
+
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@producto.Id"
+                           class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                    </td>
                 </tr>
             }
 
         </tbody>
     </table>
 }
+
