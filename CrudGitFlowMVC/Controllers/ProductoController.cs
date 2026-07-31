@@ -35,6 +35,7 @@ namespace CrudGitFlowMVC.Controllers
         public async Task<IActionResult> Create(
             [Bind("Id,Nombre,Precio,Cantidad,Descripcion")] Producto producto)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(producto);
@@ -43,9 +44,9 @@ namespace CrudGitFlowMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+
             return View(producto);
         }
-
 
 
         // GET: Productos/Edit/5

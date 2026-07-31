@@ -2,32 +2,66 @@
 
 <h1>Crear Producto</h1>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create">
 
-    <div>
-        <label>Nombre</label>
+    <div class="form-group mb-3">
+
+        <label asp-for="Nombre"></label>
+
         <input asp-for="Nombre" class="form-control" />
+
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+
     </div>
 
-    <div>
-        <label>Precio</label>
+
+    <div class="form-group mb-3">
+
+        <label asp-for="Precio"></label>
+
         <input asp-for="Precio" class="form-control" />
+
+        <span asp-validation-for="Precio" class="text-danger"></span>
+
     </div>
 
-    <div>
-        <label>Cantidad</label>
+
+    <div class="form-group mb-3">
+
+        <label asp-for="Cantidad"></label>
+
         <input asp-for="Cantidad" class="form-control" />
+
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+
     </div>
 
-    <div>
-        <label>Descripción</label>
-        <input asp-for="Descripcion" class="form-control" />
+
+    <div class="form-group mb-3">
+
+        <label asp-for="Descripcion"></label>
+
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+
     </div>
 
-    <br />
 
     <button type="submit" class="btn btn-success">
         Guardar
     </button>
 
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Volver
+    </a>
+
 </form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
