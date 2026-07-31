@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrudGitFlowMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fdd3e0a24486e540e913271bee99b93aaeacaca")]
 [assembly: System.Reflection.AssemblyProductAttribute("CrudGitFlowMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrudGitFlowMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

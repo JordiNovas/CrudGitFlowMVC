@@ -1,0 +1,33 @@
+﻿@model CrudGitFlowMVC.Models.Producto
+
+<h1>Crear Producto</h1>
+
+<form asp-action="Create" method="post">
+
+    <div>
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div>
+        <label>Precio</label>
+        <input asp-for="Precio" class="form-control" />
+    </div>
+
+    <div>
+        <label>Cantidad</label>
+        <input asp-for="Cantidad" class="form-control" />
+    </div>
+
+    <div>
+        <label>Descripción</label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">
+        Guardar
+    </button>
+
+</form>
