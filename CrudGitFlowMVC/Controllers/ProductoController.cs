@@ -32,7 +32,8 @@ namespace CrudGitFlowMVC.Controllers
         // POST: Productos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Producto producto)
+        public async Task<IActionResult> Create(
+            [Bind("Id,Nombre,Precio,Cantidad,Descripcion")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -46,6 +47,7 @@ namespace CrudGitFlowMVC.Controllers
         }
 
 
+
         // GET: Productos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -54,26 +56,34 @@ namespace CrudGitFlowMVC.Controllers
                 return NotFound();
             }
 
+
             var producto = await _context.Productos.FindAsync(id);
+
 
             if (producto == null)
             {
                 return NotFound();
             }
 
+
             return View(producto);
         }
+
 
 
         // POST: Productos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Producto producto)
+        public async Task<IActionResult> Edit(
+            int id,
+            [Bind("Id,Nombre,Precio,Cantidad,Descripcion")] Producto producto)
         {
+
             if (id != producto.Id)
             {
                 return NotFound();
             }
+
 
             if (ModelState.IsValid)
             {
@@ -84,7 +94,7 @@ namespace CrudGitFlowMVC.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductoExists(producto.Id))
+                    if (!ProductoExiste(producto.Id))
                     {
                         return NotFound();
                     }
@@ -94,17 +104,69 @@ namespace CrudGitFlowMVC.Controllers
                     }
                 }
 
+
                 return RedirectToAction(nameof(Index));
             }
+
 
             return View(producto);
         }
 
 
-        // Método auxiliar para verificar existencia
-        private bool ProductoExists(int id)
+
+
+        // GET: Productos/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+
+            var producto = await _context.Productos
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(producto);
+        }
+
+
+
+
+        // POST: Productos/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+
+            var producto = await _context.Productos.FindAsync(id);
+
+
+            if (producto != null)
+            {
+                _context.Productos.Remove(producto);
+
+                await _context.SaveChangesAsync();
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        private bool ProductoExiste(int id)
         {
             return _context.Productos.Any(e => e.Id == id);
         }
+
     }
 }
